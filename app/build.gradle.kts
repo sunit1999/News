@@ -3,6 +3,7 @@ plugins {
     id(libs.plugins.org.jetbrains.kotlin.android.get().pluginId)
     id(libs.plugins.hilt.get().pluginId)
     id(libs.plugins.ksp.get().pluginId)
+    id(libs.plugins.secrets.get().pluginId)
     kotlin("kapt")
 }
 
@@ -42,6 +43,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.0"
