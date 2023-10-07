@@ -70,9 +70,6 @@ dependencies {
     implementation(libs.androidx.tracing.ktx)
     implementation(libs.androidx.browser)
 
-    implementation(libs.coil.kt)
-    implementation(libs.coil.kt.compose)
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.lifecycle.runtimeCompose)
@@ -82,23 +79,35 @@ dependencies {
     implementation(libs.androidx.window.manager)
     implementation(libs.androidx.profileinstaller)
 
-    implementation(libs.coil.kt.svg)
+    // Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    kapt(libs.hilt.ext.compiler)
+
+    // Networking
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.datetime)
-    implementation(libs.kotlinx.serialization.json)
     implementation(libs.okhttp.logging)
     implementation(libs.retrofit.core)
-    implementation(libs.retrofit.kotlin.serialization)
+    implementation(libs.retrofit.converter.gson)
 
+    // Room
     implementation(libs.room.runtime)
     ksp(libs.room.compiler)
     implementation(libs.room.ktx)
 
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
+    // Work Manager
+    implementation(libs.androidx.work.ktx)
+    implementation(libs.hilt.ext.work)
 
+    // Coil
+    implementation(libs.coil.kt)
+    implementation(libs.coil.kt.svg)
+    implementation(libs.coil.kt.compose)
+
+    // Testing
     testImplementation(libs.junit4)
     kaptTest(libs.hilt.compiler)
-
     androidTestImplementation(libs.junit)
+    
 }

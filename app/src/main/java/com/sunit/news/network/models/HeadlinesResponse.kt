@@ -1,0 +1,40 @@
+package com.sunit.news.network.models
+
+import com.sunit.news.database.models.ArticleEntity
+
+data class HeadlinesResponse(
+    val articles: List<Article>,
+    val status: String,
+    val totalResults: Int
+)
+
+data class Article(
+    val author: String?,
+    val content: String?,
+    val description: String?,
+    val publishedAt: String?,
+    val source: Source,
+    val title: String?,
+    val url: String,
+    val urlToImage: String?
+)
+
+data class Source(
+    val id: String?,
+    val name: String?
+)
+
+
+fun Article.toArticleEntity(): ArticleEntity {
+    return ArticleEntity(
+        author = this.author,
+        content = this.content,
+        description = this.description,
+        publishedAt = this.publishedAt,
+        sourceId = this.source.id,
+        sourceName = this.source.name,
+        title = this.title,
+        url = this.url,
+        urlToImage = this.urlToImage
+    )
+}
