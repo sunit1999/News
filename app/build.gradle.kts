@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId = "com.sunit.news"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -64,8 +64,11 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.runtime)
     implementation(libs.androidx.compose.runtime.livedata)
-    implementation(libs.androidx.compose.ui.tooling.preview)
+
+    debugImplementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.ui.util)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+
     implementation(libs.androidx.metrics)
     implementation(libs.androidx.tracing.ktx)
     implementation(libs.androidx.browser)

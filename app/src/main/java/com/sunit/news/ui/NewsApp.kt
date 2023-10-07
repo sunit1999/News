@@ -1,11 +1,11 @@
 package com.sunit.news.ui
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
 import com.sunit.news.ui.composables.NewsBottomBar
 import com.sunit.news.ui.composables.NewsTopBar
@@ -34,8 +34,8 @@ fun NewsApp() {
     ) { paddingValues ->
         Column(
             modifier = Modifier
-                .fillMaxSize()
                 .padding(paddingValues)
+                .padding(horizontal = 24.dp)
         ) {
             NewsNavHost(navController = navController)
         }

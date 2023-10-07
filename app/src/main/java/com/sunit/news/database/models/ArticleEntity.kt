@@ -12,7 +12,7 @@ data class ArticleEntity(
     val author: String?,
     val content: String?,
     val description: String?,
-    val publishedAt: String?,
+    val publishedAt: String,
     val sourceId: String?,
     val sourceName: String?,
     val title: String?,
@@ -23,12 +23,12 @@ data class ArticleEntity(
 
 fun ArticleEntity.toArticle(): Article {
     return Article(
-        author = author,
-        content = content,
-        description = description,
+        author = author ?: "Unknown",
+        content = content ?: "Unknown",
+        description = description ?: "Unknown",
         publishedAt = publishedAt,
-        source = Source(id = sourceId, name = sourceName),
-        title = title,
+        source = Source(id = sourceId, name = sourceName ?: "Unknown"),
+        title = title ?: "Unknown",
         url = url,
         urlToImage = urlToImage
     )
