@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">news</string>
+
+    <!--Home-->
+    <string name="home_title">Home</string>
+    <string name="home_icon_label">Home</string>
+
+    <!--Bookmarks-->
+    <string name="bookmarks_title">Bookmarks</string>
+    <string name="bookmarks_icon_label">Bookmarks</string>
+
+    <!--Preferences-->
+    <string name="preferences_title">Preferences</string>
+    <string name="preferences_icon_label">Preferences</string>
+
 </resources>

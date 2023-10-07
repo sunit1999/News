@@ -1,9 +1,9 @@
-package com.sunit.news.feature
+package com.sunit.news.feature.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sunit.news.data.NewsRepository
-import com.sunit.news.feature.models.NewsFeedUiState
+import com.sunit.news.feature.home.models.NewsFeedUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map

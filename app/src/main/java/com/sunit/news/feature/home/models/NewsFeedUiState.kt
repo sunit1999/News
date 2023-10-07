@@ -1,4 +1,4 @@
-package com.sunit.news.feature.models
+package com.sunit.news.feature.home.models
 
 import com.sunit.news.network.models.Article
 
