@@ -9,6 +9,7 @@ import dagger.hilt.EntryPoints
 import dagger.hilt.InstallIn
 import dagger.hilt.android.HiltAndroidApp
 import dagger.hilt.components.SingletonComponent
+import timber.log.Timber
 
 @EntryPoint
 @InstallIn(SingletonComponent::class)
@@ -25,6 +26,10 @@ class MainApplication : Application(), Configuration.Provider {
 
     override fun onCreate() {
         super.onCreate()
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
+
         // Initialize Work Manager
         Sync.initialize(context = this)
     }

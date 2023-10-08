@@ -25,18 +25,37 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
             isMinifyEnabled = false
+            applicationIdSuffix = ".debug"
+        }
+        release {
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
     }
+
+    // Specifies one flavor dimension.
+    flavorDimensions += "environment"
+    productFlavors {
+        create("mock") {
+            dimension = "environment"
+            applicationIdSuffix = ".mock"
+            versionNameSuffix = "-mock"
+        }
+        create("prod") {
+            dimension = "environment"
+            applicationIdSuffix = ".prod"
+            versionNameSuffix = "-prod"
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
-//        isCoreLibraryDesugaringEnabled = true
     }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
@@ -108,9 +127,13 @@ dependencies {
     implementation(libs.coil.kt.svg)
     implementation(libs.coil.kt.compose)
 
+    // Logging
+    implementation(libs.timber)
+
     // Testing
     testImplementation(libs.junit4)
     kaptTest(libs.hilt.compiler)
     androidTestImplementation(libs.junit)
-    
+    androidTestImplementation(libs.androidx.test.runner)
+
 }

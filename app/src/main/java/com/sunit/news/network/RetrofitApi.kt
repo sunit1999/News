@@ -7,6 +7,7 @@ import kotlinx.coroutines.withContext
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
+import timber.log.Timber
 import kotlin.coroutines.cancellation.CancellationException
 
 interface RetrofitApi {
@@ -29,7 +30,7 @@ suspend fun <T> suspendRunCatching(
             val errorBody = response.errorBody()?.string()
             val errorCode = response.code()
 
-            println(errorBody.toString())
+            Timber.e(errorBody)
             error(errorCode)
         } catch (cancellationException: CancellationException) {
             throw cancellationException

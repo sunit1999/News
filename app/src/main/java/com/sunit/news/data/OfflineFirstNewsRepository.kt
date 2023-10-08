@@ -9,6 +9,7 @@ import com.sunit.news.util.toArticleEntity
 import com.sunit.news.util.toUiArticle
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import timber.log.Timber
 import java.util.UUID
 import javax.inject.Inject
 
@@ -26,7 +27,7 @@ class OfflineFirstNewsRepository @Inject constructor(
         try {
             articleDao.toggleBookmarkById(id, isBookmarked)
         } catch (e: Exception) {
-            println("Failed to update bookmark ${e.message}")
+            Timber.e("Failed to update bookmark ${e.message}")
         }
     }
 
@@ -39,7 +40,7 @@ class OfflineFirstNewsRepository @Inject constructor(
 
             true
         } catch (e: Exception) {
-            println(e.message)
+            Timber.e("Failed to Sync NewsRepository ${e.message}")
             false
         }
     }

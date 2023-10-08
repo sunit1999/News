@@ -1,9 +1,8 @@
 package com.sunit.news.network.di
 
+import com.google.gson.Gson
 import com.sunit.news.BuildConfig
-import com.sunit.news.network.NetworkDataSource
 import com.sunit.news.network.RetrofitApi
-import com.sunit.news.network.RetrofitDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,9 +20,13 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideGson(): GsonConverterFactory {
+    fun provideGsonConverterFactory(): GsonConverterFactory {
         return GsonConverterFactory.create()
     }
+
+    @Provides
+    @Singleton
+    fun provideGson() = Gson()
 
     @Provides
     @Singleton
@@ -65,13 +68,5 @@ object NetworkModule {
             .callFactory(okHttpCallFactory)
             .build()
             .create(RetrofitApi::class.java)
-    }
-
-    @Provides
-    @Singleton
-    fun provideNetworkDataSource(
-        retrofitApi: RetrofitApi
-    ): NetworkDataSource {
-        return RetrofitDataSource(retrofitApi)
     }
 }
