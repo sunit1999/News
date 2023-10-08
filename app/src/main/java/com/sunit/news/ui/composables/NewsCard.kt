@@ -1,6 +1,5 @@
 package com.sunit.news.ui.composables
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,8 +19,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.sunit.news.R
 import com.sunit.news.network.models.Article
 import com.sunit.news.util.toHumanReadableDate
@@ -34,8 +36,13 @@ fun NewsCard(
         modifier = Modifier.fillMaxWidth()
     ) {
         Column {
-            Image(
-                painter = painterResource(id = R.drawable.ic_launcher_background),
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(article.urlToImage)
+                    .crossfade(true)
+                    .build(),
+                placeholder = painterResource(R.drawable.ic_launcher_foreground),
+                fallback = painterResource(R.drawable.ic_launcher_background),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
