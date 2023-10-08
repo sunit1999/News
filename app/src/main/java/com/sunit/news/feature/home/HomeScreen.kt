@@ -31,8 +31,11 @@ fun HomeScreen(
             LazyColumn(
                 verticalArrangement = Arrangement.spacedBy(24.dp),
             ) {
-                items((feedUiState as NewsFeedUiState.Success).feed) { article ->
-                    NewsCard(article = article)
+                items((feedUiState as NewsFeedUiState.Success).feed) { uiArticle ->
+                    NewsCard(
+                        article = uiArticle,
+                        onToggleBookmark = homeViewModel::toggleBookmarkById
+                    )
                 }
             }
         }

@@ -8,11 +8,13 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
+import java.util.UUID
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    newsRepository: NewsRepository
+    private val newsRepository: NewsRepository
 ) : ViewModel() {
     val feedUiState = newsRepository.getTopHeadlines()
         .map(NewsFeedUiState::Success)
@@ -21,4 +23,10 @@ class HomeViewModel @Inject constructor(
             started = SharingStarted.WhileSubscribed(5_000),
             initialValue = NewsFeedUiState.Loading
         )
+
+    fun toggleBookmarkById(id: UUID, isBookmarked: Boolean) {
+        viewModelScope.launch {
+            newsRepository.toggleBookmarkById(id, isBookmarked)
+        }
+    }
 }

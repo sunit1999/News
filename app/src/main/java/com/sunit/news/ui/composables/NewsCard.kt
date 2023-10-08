@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Bookmark
 import androidx.compose.material.icons.outlined.BookmarkBorder
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
@@ -25,12 +26,14 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.sunit.news.R
-import com.sunit.news.network.models.Article
+import com.sunit.news.feature.home.models.UiArticle
 import com.sunit.news.util.toHumanReadableDate
+import java.util.UUID
 
 @Composable
 fun NewsCard(
-    article: Article
+    article: UiArticle,
+    onToggleBookmark: (id: UUID, isBookmarked: Boolean) -> Unit
 ) {
     ElevatedCard(
         modifier = Modifier.fillMaxWidth()
@@ -62,13 +65,21 @@ fun NewsCard(
                         style = MaterialTheme.typography.headlineSmall,
                         modifier = Modifier.weight(1f)
                     )
-                    IconButton(onClick = { /*TODO*/ }) {
-                        Icon(imageVector = Icons.Outlined.BookmarkBorder, contentDescription = null)
+                    IconButton(onClick = {
+                        onToggleBookmark(article.id, !article.isBookmarked)
+                    }) {
+                        Icon(
+                            imageVector = if (article.isBookmarked)
+                                Icons.Outlined.Bookmark
+                            else
+                                Icons.Outlined.BookmarkBorder,
+                            contentDescription = null
+                        )
                     }
                 }
                 Row {
                     Text(
-                        text = "${article.publishedAt.toHumanReadableDate()} | ${article.author} for ${article.source.name}",
+                        text = "${article.publishedAt.toHumanReadableDate()} | ${article.author} for ${article.sourceName}",
                         style = MaterialTheme.typography.labelMedium
                     )
                 }
