@@ -17,7 +17,7 @@ class BookmarksViewModel @Inject constructor(
     private val newsRepository: NewsRepository
 ) : ViewModel() {
 
-    val bookmarksUiState = newsRepository.observeBookmarkedHeadlines()
+    val bookmarksFeedUiState = newsRepository.observeBookmarkedHeadlines()
         .map(NewsFeedUiState::Success)
         .stateIn(
             scope = viewModelScope,

@@ -11,6 +11,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Bookmark
 import androidx.compose.material.icons.outlined.BookmarkBorder
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -30,12 +31,15 @@ import com.sunit.news.feature.home.models.UiArticle
 import com.sunit.news.util.toHumanReadableDate
 import java.util.UUID
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NewsCard(
     article: UiArticle,
+    onClick: () -> Unit,
     onToggleBookmark: (id: UUID, isBookmarked: Boolean) -> Unit
 ) {
     ElevatedCard(
+        onClick = onClick,
         modifier = Modifier.fillMaxWidth()
     ) {
         Column {

@@ -127,6 +127,9 @@ dependencies {
     implementation(libs.coil.kt.svg)
     implementation(libs.coil.kt.compose)
 
+    // Browser
+    implementation(libs.androidx.browser)
+
     // Logging
     implementation(libs.timber)
 
