@@ -11,6 +11,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.sunit.news.feature.home.models.NewsFeedUiState
 import com.sunit.news.ui.composables.NewsCard
+import com.sunit.news.ui.composables.NewsLoadingIndicator
 
 @Composable
 fun HomeScreen(
@@ -20,7 +21,7 @@ fun HomeScreen(
 
     when (feedUiState) {
         is NewsFeedUiState.Loading -> {
-            Text(text = "Loading feed")
+            NewsLoadingIndicator()
         }
 
         is NewsFeedUiState.Error -> {

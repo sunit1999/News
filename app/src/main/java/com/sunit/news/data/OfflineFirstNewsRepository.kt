@@ -17,8 +17,14 @@ class OfflineFirstNewsRepository @Inject constructor(
     private val network: NetworkDataSource,
     private val articleDao: ArticleDao,
 ) : NewsRepository {
-    override fun getTopHeadlines(): Flow<List<UiArticle>> {
+    override fun observeTopHeadlines(): Flow<List<UiArticle>> {
         return articleDao.getAllArticles().map {
+            it.map(ArticleEntity::toUiArticle)
+        }
+    }
+
+    override fun observeBookmarkedHeadlines(): Flow<List<UiArticle>> {
+        return articleDao.getAllBookmarkedArticles().map {
             it.map(ArticleEntity::toUiArticle)
         }
     }

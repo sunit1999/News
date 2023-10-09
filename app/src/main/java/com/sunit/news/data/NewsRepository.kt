@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import java.util.UUID
 
 interface NewsRepository : Syncable {
-    fun getTopHeadlines(): Flow<List<UiArticle>>
+    fun observeTopHeadlines(): Flow<List<UiArticle>>
+    fun observeBookmarkedHeadlines(): Flow<List<UiArticle>>
     suspend fun toggleBookmarkById(id: UUID, isBookmarked: Boolean)
 }

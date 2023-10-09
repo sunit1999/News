@@ -1,4 +1,4 @@
-package com.sunit.news.feature.home
+package com.sunit.news.feature.bookmarks
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,10 +13,11 @@ import java.util.UUID
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class BookmarksViewModel @Inject constructor(
     private val newsRepository: NewsRepository
 ) : ViewModel() {
-    val feedUiState = newsRepository.observeTopHeadlines()
+
+    val bookmarksUiState = newsRepository.observeBookmarkedHeadlines()
         .map(NewsFeedUiState::Success)
         .stateIn(
             scope = viewModelScope,
