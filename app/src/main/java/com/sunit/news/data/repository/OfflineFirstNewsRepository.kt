@@ -1,5 +1,6 @@
-package com.sunit.news.data
+package com.sunit.news.data.repository
 
+import com.sunit.news.data.NewsRepository
 import com.sunit.news.database.ArticleDao
 import com.sunit.news.database.models.ArticleEntity
 import com.sunit.news.feature.home.models.UiArticle

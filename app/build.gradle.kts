@@ -4,6 +4,7 @@ plugins {
     id(libs.plugins.hilt.get().pluginId)
     id(libs.plugins.ksp.get().pluginId)
     id(libs.plugins.secrets.get().pluginId)
+    id(libs.plugins.protobuf.get().pluginId)
     kotlin("kapt")
 }
 
@@ -74,6 +75,24 @@ android {
     }
 }
 
+protobuf {
+    protoc {
+        artifact = libs.protobuf.protoc.get().toString()
+    }
+    generateProtoTasks {
+        all().forEach { task ->
+            task.builtins {
+                register("java") {
+                    option("lite")
+                }
+                register("kotlin") {
+                    option("lite")
+                }
+            }
+        }
+    }
+}
+
 dependencies {
 
     implementation(libs.androidx.activity.compose)
@@ -117,6 +136,10 @@ dependencies {
     implementation(libs.room.runtime)
     ksp(libs.room.compiler)
     implementation(libs.room.ktx)
+
+    // Datastore
+    implementation(libs.androidx.dataStore.core)
+    implementation(libs.protobuf.kotlin.lite)
 
     // Work Manager
     implementation(libs.androidx.work.ktx)
