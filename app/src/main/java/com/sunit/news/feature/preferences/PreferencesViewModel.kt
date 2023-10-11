@@ -21,7 +21,8 @@ class PreferencesViewModel @Inject constructor(
         .map { userPreferences ->
             PreferencesUiState.Success(
                 EditablePreferences(
-                    darkThemeConfig = userPreferences.darkThemeConfig
+                    darkThemeConfig = userPreferences.darkThemeConfig,
+                    countryCode = userPreferences.countryCode
                 )
             )
         }
@@ -33,7 +34,13 @@ class PreferencesViewModel @Inject constructor(
 
     fun updateDarkThemeConfig(darkThemeConfig: DarkThemeConfig) {
         viewModelScope.launch {
-            userDataRepository.updateDarkThemeConfig(darkThemeConfig)
+            userDataRepository.updateDarkThemeConfig(darkThemeConfig = darkThemeConfig)
+        }
+    }
+
+    fun updateCountryCode(countryCode: String) {
+        viewModelScope.launch {
+            userDataRepository.updateCountryCode(countryCode = countryCode)
         }
     }
 }

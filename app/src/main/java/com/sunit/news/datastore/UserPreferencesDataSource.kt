@@ -31,7 +31,8 @@ class UserPreferencesDataSource @Inject constructor(
                     DarkThemeConfigProto.DARK_THEME_CONFIG_LIGHT -> DarkThemeConfig.LIGHT
                     DarkThemeConfigProto.DARK_THEME_CONFIG_DARK -> DarkThemeConfig.DARK
                     else -> DarkThemeConfig.SYSTEM_DEFAULT
-                }
+                },
+                countryCode = it.countryCode.ifEmpty { "us" }
             )
         }
 
@@ -51,4 +52,15 @@ class UserPreferencesDataSource @Inject constructor(
         }
     }
 
+    suspend fun updateCountryCode(countryCode: String) {
+        try {
+            userPreferencesDataStore.updateData {
+                it.copy {
+                    this.countryCode = countryCode
+                }
+            }
+        } catch (ioException: IOException) {
+            Timber.e("Failed to update user preferences. $ioException")
+        }
+    }
 }

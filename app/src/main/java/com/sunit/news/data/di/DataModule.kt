@@ -22,8 +22,9 @@ object DataModule {
     fun provideNewsRepository(
         networkDataSource: NetworkDataSource,
         articleDao: ArticleDao,
+        preferencesDataSource: UserPreferencesDataSource
     ): NewsRepository {
-        return OfflineFirstNewsRepository(networkDataSource, articleDao)
+        return OfflineFirstNewsRepository(networkDataSource, articleDao, preferencesDataSource)
     }
 
     @Provides

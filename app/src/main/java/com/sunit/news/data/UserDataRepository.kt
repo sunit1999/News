@@ -7,4 +7,5 @@ import kotlinx.coroutines.flow.Flow
 interface UserDataRepository {
     val userData: Flow<UserData>
     suspend fun updateDarkThemeConfig(darkThemeConfig: DarkThemeConfig)
+    suspend fun updateCountryCode(countryCode: String)
 }

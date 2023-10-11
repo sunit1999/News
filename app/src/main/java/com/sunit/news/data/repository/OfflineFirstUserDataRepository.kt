@@ -11,6 +11,10 @@ class OfflineFirstUserDataRepository @Inject constructor(
     override val userData = userPreferencesDataSource.userData
 
     override suspend fun updateDarkThemeConfig(darkThemeConfig: DarkThemeConfig) {
-        userPreferencesDataSource.updateDarkThemeConfig(darkThemeConfig)
+        userPreferencesDataSource.updateDarkThemeConfig(darkThemeConfig = darkThemeConfig)
+    }
+
+    override suspend fun updateCountryCode(countryCode: String) {
+        userPreferencesDataSource.updateCountryCode(countryCode = countryCode)
     }
 }

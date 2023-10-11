@@ -16,7 +16,7 @@ class MockDataSource @Inject constructor(
     @ApplicationContext private val context: Context,
     private val gson: Gson
 ) : NetworkDataSource {
-    override suspend fun getTopHeadlines(): HeadlinesResponse {
+    override suspend fun getTopHeadlines(countryCode: String): HeadlinesResponse {
         return withContext(ioDispatcher) {
             context.readJsonDataFromAsset("top-headlines.json", gson)
         }

@@ -8,9 +8,9 @@ import javax.inject.Singleton
 class RetrofitDataSource @Inject constructor(
     private val api: RetrofitApi
 ) : NetworkDataSource {
-    override suspend fun getTopHeadlines(): HeadlinesResponse {
+    override suspend fun getTopHeadlines(countryCode: String): HeadlinesResponse {
         return suspendRunCatching {
-            api.getTopHeadlines()
+            api.getTopHeadlines(countryCode)
         }
     }
 }
