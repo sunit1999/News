@@ -35,9 +35,11 @@ fun NewsApp() {
         Column(
             modifier = Modifier
                 .padding(paddingValues)
-                .padding(horizontal = 24.dp)
         ) {
-            NewsNavHost(navController = navController)
+            NewsNavHost(
+                navController = navController,
+                modifier = Modifier.padding(horizontal = 24.dp)
+            )
         }
     }
 }

@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.sunit.news.feature.home.models.NewsFeedUiState
@@ -18,9 +19,9 @@ import java.util.UUID
 @Composable
 fun NewsFeed(
     feedUiState: NewsFeedUiState,
-    onToggleBookmark: (id: UUID, isBookmarked: Boolean) -> Unit
+    onToggleBookmark: (id: UUID, isBookmarked: Boolean) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
-
     when (feedUiState) {
         is NewsFeedUiState.Loading -> {
             NewsLoadingIndicator()
@@ -33,7 +34,8 @@ fun NewsFeed(
         is NewsFeedUiState.Success -> {
             NewsFeedSuccess(
                 feedUiState = feedUiState,
-                onToggleBookmark = onToggleBookmark
+                onToggleBookmark = onToggleBookmark,
+                modifier = modifier
             )
         }
     }
@@ -42,10 +44,12 @@ fun NewsFeed(
 @Composable
 fun NewsFeedSuccess(
     feedUiState: NewsFeedUiState,
-    onToggleBookmark: (id: UUID, isBookmarked: Boolean) -> Unit
+    onToggleBookmark: (id: UUID, isBookmarked: Boolean) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(24.dp),
+        modifier = modifier
     ) {
         items(
             items = (feedUiState as NewsFeedUiState.Success).feed,

@@ -12,5 +12,11 @@
     <!--Preferences-->
     <string name="preferences_title">Preferences</string>
     <string name="preferences_icon_label">Preferences</string>
+    <string name="theme_setting">Theme</string>
+    <string name="region_setting">Region</string>
 
+    <!--Themes-->
+    <string name="system_default_theme">System Default</string>
+    <string name="dark_theme">Dark</string>
+    <string name="light_theme">Light</string>
 </resources>
