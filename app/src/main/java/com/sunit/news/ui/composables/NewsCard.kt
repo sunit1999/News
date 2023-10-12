@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Bookmark
 import androidx.compose.material.icons.outlined.BookmarkBorder
@@ -15,7 +14,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.SuggestionChip
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -91,20 +89,6 @@ fun NewsCard(
                     text = article.description,
                     style = MaterialTheme.typography.bodyLarge
                 )
-                LazyRow(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                    items(10) {
-                        SuggestionChip(
-                            onClick = { /*TODO*/ },
-                            label = {
-                                Text(
-                                    text = "Chip $it",
-                                    style = MaterialTheme.typography.labelLarge,
-                                    modifier = Modifier.padding(vertical = 4.dp)
-                                )
-                            },
-                        )
-                    }
-                }
             }
         }
     }

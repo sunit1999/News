@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.sunit.news.feature.home.models.NewsFeedUiState
+import com.sunit.news.feature.home.models.UiArticle
 import com.sunit.news.util.launchCustomChromeTab
 import java.util.UUID
 
@@ -33,7 +34,7 @@ fun NewsFeed(
 
         is NewsFeedUiState.Success -> {
             NewsFeedSuccess(
-                feedUiState = feedUiState,
+                feed = feedUiState.feed,
                 onToggleBookmark = onToggleBookmark,
                 modifier = modifier
             )
@@ -43,16 +44,20 @@ fun NewsFeed(
 
 @Composable
 fun NewsFeedSuccess(
-    feedUiState: NewsFeedUiState,
+    feed: List<UiArticle>,
     onToggleBookmark: (id: UUID, isBookmarked: Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    if (feed.isEmpty()) {
+        EmptyFeed(modifier)
+    }
+
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(24.dp),
         modifier = modifier
     ) {
         items(
-            items = (feedUiState as NewsFeedUiState.Success).feed,
+            items = feed,
             key = { it.id }
         ) { uiArticle ->
             val context = LocalContext.current

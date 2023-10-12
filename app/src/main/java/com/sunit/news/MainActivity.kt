@@ -47,10 +47,11 @@ class MainActivity : ComponentActivity() {
 private fun shouldUseDarkTheme(
     uiState: MainActivityUIState,
 ): Boolean = when (uiState) {
-    MainActivityUIState.Loading -> isSystemInDarkTheme()
     is MainActivityUIState.Success -> when (uiState.userData.darkThemeConfig) {
         DarkThemeConfig.LIGHT -> false
         DarkThemeConfig.DARK -> true
         else -> isSystemInDarkTheme()
     }
+
+    else -> isSystemInDarkTheme()
 }

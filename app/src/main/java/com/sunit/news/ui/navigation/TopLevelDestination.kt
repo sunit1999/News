@@ -1,5 +1,6 @@
 package com.sunit.news.ui.navigation
 
+import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Bookmarks
 import androidx.compose.material.icons.outlined.Home
@@ -15,7 +16,7 @@ enum class TopLevelDestination(
     val unselectedIcon: ImageVector,
     val selectedIcon: ImageVector,
     val iconTextId: Int,
-    val titleTextId: Int,
+    @StringRes val titleTextId: Int,
 ) {
     HOME(
         route = "home",

@@ -14,7 +14,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.sunit.news.R
 import com.sunit.news.feature.preferences.composables.REGION_PREFERENCES_ROUTE
 import com.sunit.news.feature.preferences.composables.THEME_PREFERENCES_ROUTE
@@ -24,9 +23,7 @@ const val PREFERENCES_HOME_ROUTE = "preferences_home"
 @Composable
 fun PreferencesScreen(
     navigateToPreference: (route: String) -> Unit,
-    preferencesViewModel: PreferencesViewModel = hiltViewModel()
 ) {
-
     Column {
         SettingsListItem(
             text = stringResource(id = R.string.theme_setting),

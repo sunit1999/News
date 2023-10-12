@@ -21,17 +21,17 @@ fun NewsNavHost(
     modifier: Modifier = Modifier
 ) {
     NavHost(navController = navController, startDestination = TopLevelDestination.HOME.route) {
-        composable(TopLevelDestination.HOME.route) {
+        composable(route = TopLevelDestination.HOME.route) {
             HomeScreen(modifier = modifier)
         }
-        composable(TopLevelDestination.BOOKMARKS.route) {
+        composable(route = TopLevelDestination.BOOKMARKS.route) {
             BookmarksScreen(modifier = modifier)
         }
         navigation(
-            startDestination = PREFERENCES_HOME_ROUTE,
-            route = TopLevelDestination.PREFERENCES.route
+            route = PREFERENCES_HOME_ROUTE,
+            startDestination = TopLevelDestination.PREFERENCES.route,
         ) {
-            composable(PREFERENCES_HOME_ROUTE) {
+            composable(route = TopLevelDestination.PREFERENCES.route) {
                 PreferencesScreen(
                     navigateToPreference = {
                         navController.navigate(it) {
@@ -40,10 +40,10 @@ fun NewsNavHost(
                     }
                 )
             }
-            composable(THEME_PREFERENCES_ROUTE) {
+            composable(route = THEME_PREFERENCES_ROUTE) {
                 ThemePreferences()
             }
-            composable(REGION_PREFERENCES_ROUTE) {
+            composable(route = REGION_PREFERENCES_ROUTE) {
                 RegionPreferences()
             }
         }
