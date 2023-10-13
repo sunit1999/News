@@ -15,6 +15,12 @@ interface RetrofitApi {
     suspend fun getTopHeadlines(
         @Query("country") countryCode: String = "us"
     ): Response<HeadlinesResponse>
+
+    @GET(value = "everything")
+    suspend fun searchEverything(
+        @Query("q") query: String,
+        @Query("pageSize") pageSize: Int = 10
+    ): Response<HeadlinesResponse>
 }
 
 suspend fun <T> suspendRunCatching(

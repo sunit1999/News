@@ -14,6 +14,7 @@ import com.sunit.news.feature.preferences.composables.REGION_PREFERENCES_ROUTE
 import com.sunit.news.feature.preferences.composables.RegionPreferences
 import com.sunit.news.feature.preferences.composables.THEME_PREFERENCES_ROUTE
 import com.sunit.news.feature.preferences.composables.ThemePreferences
+import com.sunit.news.feature.search.SearchScreen
 
 @Composable
 fun NewsNavHost(
@@ -23,6 +24,9 @@ fun NewsNavHost(
     NavHost(navController = navController, startDestination = TopLevelDestination.HOME.route) {
         composable(route = TopLevelDestination.HOME.route) {
             HomeScreen(modifier = modifier)
+        }
+        composable(route = TopLevelDestination.SEARCH.route) {
+            SearchScreen(modifier = modifier)
         }
         composable(route = TopLevelDestination.BOOKMARKS.route) {
             BookmarksScreen(modifier = modifier)

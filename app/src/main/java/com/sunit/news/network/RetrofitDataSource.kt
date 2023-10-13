@@ -13,4 +13,10 @@ class RetrofitDataSource @Inject constructor(
             api.getTopHeadlines(countryCode)
         }
     }
+
+    override suspend fun searchEverything(query: String): HeadlinesResponse {
+        return suspendRunCatching {
+            api.searchEverything(query)
+        }
+    }
 }

@@ -15,7 +15,7 @@ import com.sunit.news.ui.navigation.TopLevelDestination
 fun NewsBottomBar(
     destinations: List<TopLevelDestination>,
     navController: NavController,
-    onNavigateToDestination: (topLevelDestination: TopLevelDestination) -> Unit,
+    onNavigateToDestination: (TopLevelDestination) -> Unit,
 ) {
     val backStackEntry by navController.currentBackStackEntryAsState()
 

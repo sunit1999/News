@@ -4,6 +4,7 @@ import com.sunit.news.database.models.ArticleEntity
 import com.sunit.news.feature.home.models.UiArticle
 import com.sunit.news.network.models.NetworkArticle
 import com.sunit.news.network.models.Source
+import java.util.UUID
 
 fun NetworkArticle.toArticleEntity(): ArticleEntity {
     return ArticleEntity(
@@ -16,6 +17,20 @@ fun NetworkArticle.toArticleEntity(): ArticleEntity {
         title = this.title,
         url = this.url,
         urlToImage = this.urlToImage,
+        isBookmarked = false,
+    )
+}
+
+fun NetworkArticle.toUiArticle(): UiArticle {
+    return UiArticle(
+        id = UUID.randomUUID(),
+        author = author,
+        description = description,
+        publishedAt = publishedAt,
+        sourceName = source.name,
+        title = title,
+        url = url,
+        urlToImage = urlToImage,
         isBookmarked = false,
     )
 }

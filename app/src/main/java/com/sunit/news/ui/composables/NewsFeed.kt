@@ -20,7 +20,7 @@ import java.util.UUID
 @Composable
 fun NewsFeed(
     feedUiState: NewsFeedUiState,
-    onToggleBookmark: (id: UUID, isBookmarked: Boolean) -> Unit,
+    onToggleBookmark: (UUID, Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     when (feedUiState) {
@@ -45,7 +45,7 @@ fun NewsFeed(
 @Composable
 fun NewsFeedSuccess(
     feed: List<UiArticle>,
-    onToggleBookmark: (id: UUID, isBookmarked: Boolean) -> Unit,
+    onToggleBookmark: (UUID, Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     if (feed.isEmpty()) {

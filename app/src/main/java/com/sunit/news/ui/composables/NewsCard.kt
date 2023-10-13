@@ -34,7 +34,7 @@ import java.util.UUID
 fun NewsCard(
     article: UiArticle,
     onClick: () -> Unit,
-    onToggleBookmark: (id: UUID, isBookmarked: Boolean) -> Unit
+    onToggleBookmark: (UUID, Boolean) -> Unit
 ) {
     ElevatedCard(
         onClick = onClick,

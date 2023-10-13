@@ -1,9 +1,11 @@
 package com.sunit.news.data.di
 
 import com.sunit.news.data.NewsRepository
+import com.sunit.news.data.SearchRepository
 import com.sunit.news.data.UserDataRepository
 import com.sunit.news.data.repository.OfflineFirstNewsRepository
 import com.sunit.news.data.repository.OfflineFirstUserDataRepository
+import com.sunit.news.data.repository.SearchRepositoryImpl
 import com.sunit.news.database.ArticleDao
 import com.sunit.news.datastore.UserPreferencesDataSource
 import com.sunit.news.network.NetworkDataSource
@@ -33,5 +35,13 @@ object DataModule {
         userPreferencesDataSource: UserPreferencesDataSource
     ): UserDataRepository {
         return OfflineFirstUserDataRepository(userPreferencesDataSource)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSearchRepository(
+        networkDataSource: NetworkDataSource
+    ): SearchRepository {
+        return SearchRepositoryImpl(networkDataSource)
     }
 }

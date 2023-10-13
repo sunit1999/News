@@ -21,4 +21,10 @@ class MockDataSource @Inject constructor(
             context.readJsonDataFromAsset("top-headlines.json", gson)
         }
     }
+
+    override suspend fun searchEverything(query: String): HeadlinesResponse {
+        return withContext(ioDispatcher) {
+            context.readJsonDataFromAsset("top-headlines.json", gson)
+        }
+    }
 }

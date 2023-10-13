@@ -54,7 +54,7 @@ fun RegionPreferences(
 fun RegionsDropdown(
     selectedOptionText: String,
     regions: List<String>,
-    onClick: (countryCode: String) -> Unit
+    onClick: (String) -> Unit
 ) {
     var expanded by remember { mutableStateOf(false) }
 

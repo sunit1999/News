@@ -22,7 +22,7 @@ const val PREFERENCES_HOME_ROUTE = "preferences_home"
 
 @Composable
 fun PreferencesScreen(
-    navigateToPreference: (route: String) -> Unit,
+    navigateToPreference: (String) -> Unit,
 ) {
     Column {
         SettingsListItem(
