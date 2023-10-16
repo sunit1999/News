@@ -25,4 +25,10 @@
     <string name="light_theme">Light</string>
 
     <string name="no_saved_feed">No Saved Feed</string>
+
+    <!--Icons Accessibility-->
+    <string name="scroll_to_top">Scroll to top</string>
+    <string name="remove_from_bookmarks">Remove from Bookmarks</string>
+    <string name="add_to_bookmarks">Add to Bookmarks</string>
+    <string name="clear_input">Clear Input</string>
 </resources>

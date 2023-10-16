@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
@@ -75,7 +76,10 @@ fun NewsCard(
                                 Icons.Outlined.Bookmark
                             else
                                 Icons.Outlined.BookmarkBorder,
-                            contentDescription = null
+                            contentDescription = if (article.isBookmarked)
+                                stringResource(R.string.remove_from_bookmarks)
+                            else
+                                stringResource(R.string.add_to_bookmarks)
                         )
                     }
                 }
