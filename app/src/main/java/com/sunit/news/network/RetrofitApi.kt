@@ -19,6 +19,11 @@ interface RetrofitApi {
     @GET(value = "everything")
     suspend fun searchEverything(
         @Query("q") query: String,
+        @Query("searchIn") searchIn: String?,
+        @Query("from") from: String?,
+        @Query("to") to: String?,
+        @Query("language") language: String?,
+        @Query("sortBy") sortBy: String?,
         @Query("pageSize") pageSize: Int = 10
     ): Response<HeadlinesResponse>
 }

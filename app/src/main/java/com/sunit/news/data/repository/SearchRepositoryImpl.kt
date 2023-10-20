@@ -13,9 +13,23 @@ import javax.inject.Inject
 class SearchRepositoryImpl @Inject constructor(
     private val network: NetworkDataSource
 ) : SearchRepository {
-    override suspend fun searchEverything(query: String): List<UiArticle> {
+    override suspend fun searchEverything(
+        query: String,
+        searchIn: String?,
+        from: String?,
+        to: String?,
+        language: String?,
+        sortBy: String?,
+    ): List<UiArticle> {
         return try {
-            val searchResult = network.searchEverything(query).articles
+            val searchResult = network.searchEverything(
+                query = query,
+                searchIn = searchIn,
+                from = from,
+                to = to,
+                language = language,
+                sortBy = sortBy
+            ).articles
                 .map(NetworkArticle::toArticleEntity)
                 .map(ArticleEntity::toUiArticle)
             searchResult

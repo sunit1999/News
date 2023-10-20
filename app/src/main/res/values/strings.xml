@@ -24,6 +24,7 @@
     <string name="dark_theme">Dark</string>
     <string name="light_theme">Light</string>
 
+    <!--Empty-->
     <string name="no_saved_feed">No Saved Feed</string>
 
     <!--Icons Accessibility-->
@@ -31,4 +32,13 @@
     <string name="remove_from_bookmarks">Remove from Bookmarks</string>
     <string name="add_to_bookmarks">Add to Bookmarks</string>
     <string name="clear_input">Clear Input</string>
+
+    <!--Filters-->
+    <string name="filters">Filters</string>
+    <string name="sort_by">Sort By</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="scope">Scope</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
 </resources>

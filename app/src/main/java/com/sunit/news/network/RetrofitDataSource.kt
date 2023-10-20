@@ -14,9 +14,23 @@ class RetrofitDataSource @Inject constructor(
         }
     }
 
-    override suspend fun searchEverything(query: String): HeadlinesResponse {
+    override suspend fun searchEverything(
+        query: String,
+        searchIn: String?,
+        from: String?,
+        to: String?,
+        language: String?,
+        sortBy: String?,
+    ): HeadlinesResponse {
         return suspendRunCatching {
-            api.searchEverything(query)
+            api.searchEverything(
+                query = query,
+                searchIn = searchIn,
+                from = from,
+                to = to,
+                language = language,
+                sortBy = sortBy
+            )
         }
     }
 }
