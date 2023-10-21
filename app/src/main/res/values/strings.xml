@@ -43,4 +43,8 @@
     <string name="to">To</string>
 
     <string name="not_connected">⚠️ You aren’t connected to the internet</string>
+
+    <!--Notification-->
+    <string name="background_tasks_for_news_app">Background tasks for News app</string>
+    <string name="sync">Sync</string>
 </resources>

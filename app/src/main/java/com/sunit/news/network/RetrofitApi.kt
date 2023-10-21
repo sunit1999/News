@@ -13,7 +13,8 @@ import kotlin.coroutines.cancellation.CancellationException
 interface RetrofitApi {
     @GET(value = "top-headlines")
     suspend fun getTopHeadlines(
-        @Query("country") countryCode: String = "us"
+        @Query("country") countryCode: String = "us",
+        @Query("pageSize") pageSize: Int = 100
     ): Response<HeadlinesResponse>
 
     @GET(value = "everything")
@@ -24,7 +25,7 @@ interface RetrofitApi {
         @Query("to") to: String?,
         @Query("language") language: String?,
         @Query("sortBy") sortBy: String?,
-        @Query("pageSize") pageSize: Int = 10
+        @Query("pageSize") pageSize: Int = 50
     ): Response<HeadlinesResponse>
 }
 

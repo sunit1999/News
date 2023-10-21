@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.hilt.work.HiltWorker
 import androidx.work.Constraints
 import androidx.work.CoroutineWorker
+import androidx.work.ForegroundInfo
 import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequest
 import androidx.work.OneTimeWorkRequestBuilder
@@ -16,7 +17,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-// All sync work needs an internet connectionS
+// All sync work needs an internet connection
 val SyncConstraints
     get() = Constraints.Builder()
         .setRequiredNetworkType(NetworkType.CONNECTED)
@@ -24,7 +25,7 @@ val SyncConstraints
 
 @HiltWorker
 class SyncWorker @AssistedInject constructor(
-    @Assisted context: Context,
+    @Assisted private val context: Context,
     @Assisted workerParams: WorkerParameters,
     private val newsRepository: NewsRepository,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
@@ -39,6 +40,10 @@ class SyncWorker @AssistedInject constructor(
             else
                 Result.retry()
         }
+    }
+
+    override suspend fun getForegroundInfo(): ForegroundInfo {
+        return ForegroundInfo(SYNC_NOTIFICATION_ID, context.syncWorkNotification())
     }
 
     companion object {
