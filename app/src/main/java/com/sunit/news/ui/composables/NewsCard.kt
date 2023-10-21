@@ -47,8 +47,8 @@ fun NewsCard(
                     .data(article.urlToImage)
                     .crossfade(true)
                     .build(),
-                placeholder = painterResource(R.drawable.ic_launcher_foreground),
-                fallback = painterResource(R.drawable.ic_launcher_background),
+                placeholder = painterResource(R.drawable.news_placeholder),
+                fallback = painterResource(R.drawable.news_placeholder),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
