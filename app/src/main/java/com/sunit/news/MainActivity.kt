@@ -20,13 +20,14 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    val mainActivityViewModel: MainActivityViewModel by viewModels()
+    private val mainActivityViewModel: MainActivityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
             val mainActivityUIState by mainActivityViewModel.uiState.collectAsStateWithLifecycle()
+            val isOnline by mainActivityViewModel.isOnline.collectAsStateWithLifecycle()
 
             NewsTheme(
                 darkTheme = shouldUseDarkTheme(uiState = mainActivityUIState)
@@ -36,7 +37,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    NewsApp()
+                    NewsApp(isOnline)
                 }
             }
         }

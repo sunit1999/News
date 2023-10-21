@@ -1,11 +1,15 @@
 package com.sunit.news.network.di
 
+import android.content.Context
 import com.google.gson.Gson
 import com.sunit.news.BuildConfig
+import com.sunit.news.network.NetworkMonitor
+import com.sunit.news.network.NetworkMonitorImpl
 import com.sunit.news.network.RetrofitApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Call
 import okhttp3.OkHttpClient
@@ -68,5 +72,13 @@ object NetworkModule {
             .callFactory(okHttpCallFactory)
             .build()
             .create(RetrofitApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideNetworkMonitor(
+        @ApplicationContext context: Context
+    ): NetworkMonitor {
+        return NetworkMonitorImpl(context)
     }
 }

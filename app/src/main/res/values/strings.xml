@@ -41,4 +41,6 @@
     <string name="scope">Scope</string>
     <string name="from">From</string>
     <string name="to">To</string>
+
+    <string name="not_connected">⚠️ You aren’t connected to the internet</string>
 </resources>
