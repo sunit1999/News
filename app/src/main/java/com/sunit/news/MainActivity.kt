@@ -1,14 +1,18 @@
 package com.sunit.news
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -28,9 +32,24 @@ class MainActivity : ComponentActivity() {
         setContent {
             val mainActivityUIState by mainActivityViewModel.uiState.collectAsStateWithLifecycle()
             val isOnline by mainActivityViewModel.isOnline.collectAsStateWithLifecycle()
+            val isDarkTheme = shouldUseDarkTheme(uiState = mainActivityUIState)
+
+            DisposableEffect(isDarkTheme) {
+                enableEdgeToEdge(
+                    statusBarStyle = SystemBarStyle.auto(
+                        Color.TRANSPARENT,
+                        Color.TRANSPARENT,
+                    ) { isDarkTheme },
+                    navigationBarStyle = SystemBarStyle.auto(
+                        Color.TRANSPARENT,
+                        Color.TRANSPARENT,
+                    ) { isDarkTheme },
+                )
+                onDispose {}
+            }
 
             NewsTheme(
-                darkTheme = shouldUseDarkTheme(uiState = mainActivityUIState)
+                darkTheme = isDarkTheme
             ) {
                 // A surface container using the 'background' color from the theme
                 Surface(
