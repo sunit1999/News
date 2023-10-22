@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,21 +29,24 @@ fun EmptyFeed(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Image(
-            modifier = Modifier
-                .width(64.dp)
-                .height(64.dp),
-            painter = painterResource(id = R.drawable.img_empty_bookmarks),
+            modifier = Modifier.size(184.dp),
+            painter = painterResource(id = R.drawable.news_placeholder),
             contentDescription = null
         )
-        Spacer(
-            modifier = Modifier
-                .height(64.dp)
-        )
+
         Text(
-            text = stringResource(R.string.no_saved_feed),
+            text = stringResource(R.string.empty_feed_title),
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold,
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Text(
+            text = stringResource(R.string.empty_feed_caption),
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.bodyMedium,
         )
     }
 }

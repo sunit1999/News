@@ -25,7 +25,8 @@
     <string name="light_theme">Light</string>
 
     <!--Empty-->
-    <string name="no_saved_feed">No Saved Feed</string>
+    <string name="empty_feed_title">Nothing in here</string>
+    <string name="empty_feed_caption">Bookmark/Search stories to read them here</string>
 
     <!--Icons Accessibility-->
     <string name="scroll_to_top">Scroll to top</string>
