@@ -1,5 +1,6 @@
 package com.sunit.news.ui.composables
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -18,12 +19,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
+import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import com.sunit.news.R
 import com.sunit.news.feature.home.models.UiArticle
@@ -42,13 +44,27 @@ fun NewsCard(
         modifier = Modifier.fillMaxWidth()
     ) {
         Column {
-            AsyncImage(
+            SubcomposeAsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(article.urlToImage)
                     .crossfade(true)
                     .build(),
-                placeholder = painterResource(R.drawable.news_placeholder),
-                fallback = painterResource(R.drawable.news_placeholder),
+                loading = {
+                    Image(
+                        painter = painterResource(id = R.drawable.news_placeholder),
+                        colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onBackground),
+                        contentScale = ContentScale.Crop,
+                        contentDescription = null
+                    )
+                },
+                error = {
+                    Image(
+                        painter = painterResource(id = R.drawable.news_placeholder),
+                        colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onBackground),
+                        contentScale = ContentScale.Crop,
+                        contentDescription = null
+                    )
+                },
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
