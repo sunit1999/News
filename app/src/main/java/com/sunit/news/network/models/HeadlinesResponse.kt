@@ -1,11 +1,15 @@
 package com.sunit.news.network.models
 
+import androidx.annotation.Keep
+
+@Keep
 data class HeadlinesResponse(
     val articles: List<NetworkArticle>,
     val status: String,
     val totalResults: Int
 )
 
+@Keep
 data class NetworkArticle(
     val author: String,
     val content: String,
@@ -17,6 +21,7 @@ data class NetworkArticle(
     val urlToImage: String?
 )
 
+@Keep
 data class Source(
     val id: String?,
     val name: String

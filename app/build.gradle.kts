@@ -25,6 +25,15 @@ android {
         }
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file(project.properties["RELEASE_STORE_FILE"] as String)
+            storePassword = project.properties["RELEASE_STORE_PASSWORD"] as String
+            keyAlias = project.properties["RELEASE_KEY_ALIAS"] as String
+            keyPassword = project.properties["RELEASE_KEY_PASSWORD"] as String
+        }
+    }
+
     buildTypes {
         debug {
             isMinifyEnabled = false
@@ -36,6 +45,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 
@@ -69,6 +79,18 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+
+    // Add this postBuild task to print the values
+    afterEvaluate {
+        tasks.create("printSigningConfig") {
+            doLast {
+                println("RELEASE_STORE_FILE=" + signingConfigs.getByName("release").storeFile)
+                println("RELEASE_STORE_PASSWORD=" + signingConfigs.getByName("release").storePassword)
+                println("RELEASE_KEY_ALIAS=" + signingConfigs.getByName("release").keyAlias)
+                println("RELEASE_KEY_PASSWORD=" + signingConfigs.getByName("release").keyPassword)
+            }
         }
     }
 }
@@ -107,7 +129,6 @@ dependencies {
 
     implementation(libs.androidx.metrics)
     implementation(libs.androidx.tracing.ktx)
-    implementation(libs.androidx.browser)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.core.splashscreen)
