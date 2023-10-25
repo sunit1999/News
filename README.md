@@ -17,8 +17,9 @@
     </a>
 </p>
 
-NEWS is a free and open-source mobile application that provides users with access to top headlines
-from trusted news sources.
+**NEWS** is an offline-first free mobile application that provides users with access to top headlines from trusted news sources.
+
+## Screenshots
 
 <p align="center">
     <img src="screenshots/home_light.png" width="200" />
@@ -37,9 +38,9 @@ from trusted news sources.
 ## Technologies Used
 
 - **Jetpack Compose**: A modern Android UI toolkit for building native user interfaces.
-- **Retrofit**: A popular HTTP client for making network requests in Android apps.
-- **WorkManager**: Used for background processing tasks and scheduling.
-- **DataStore**: A data storage solution for persisting key-value pairs and other data.
-- **Material Design 3**: A design language for creating visually appealing and consistent user
-  interfaces.
+- **Retrofit**: A HTTP client for making network requests in Android apps.
+- **Room**: An Android SQLite database library that simplifies data persistence.
+- **WorkManager**: Used for background processing tasks such as syncing Room database.
+- **DataStore**: A data storage solution for persisting key-value pairs such as user preferences.
+- **Material Design 3**: A design language for creating visually appealing and consistent user interfaces.
 - **NewsAPI.org**: An API used to fetch news data from various sources.
