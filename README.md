@@ -1,26 +1,30 @@
 <p align="center">
-    <img src="screenshots/Banner.png" width="300" />
+    <img src="screenshots/Banner.png" width="500" />
 </p>
 
-<div style="display: flex; align-items: center; justify-content: center;">
-    <a href="https://github.com/sunit1999/News/blob/main/LICENSE">
-        <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="Apache License 2.0" style="margin-right: 10px;">
-    </a>
-    <a href="https://github.com/sunit1999/News/releases">
-        <img src="https://img.shields.io/github/release/sunit1999/News" alt="Latest Release" style="margin-right: 10px;">
-    </a>
+<p align="center">
     <a href="https://play.google.com/store/apps/details?id=[YourPackageID]">
         <img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" width="200">
     </a>
-</div>
+</p>
+
+<p align="center">
+    <a href="https://github.com/sunit1999/News/releases">
+        <img src="https://img.shields.io/github/release/sunit1999/News" alt="Latest Release" style="margin-right: 10px;">
+    </a>
+    <a href="https://github.com/sunit1999/News/blob/main/LICENSE">
+        <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="Apache License 2.0" style="margin-right: 10px;">
+    </a>
+</p>
 
 NEWS is a free and open-source mobile application that provides users with access to top headlines
 from trusted news sources.
 
-<img src="screenshots/home_light.png" width="200" />
-<img src="screenshots/search_light.png" width="200" />
-<img src="screenshots/bookmarks_dark.png" width="200" />
-
+<p align="center">
+    <img src="screenshots/home_light.png" width="200" />
+    <img src="screenshots/search_light.png" width="200" />
+    <img src="screenshots/bookmarks_dark.png" width="200" />
+</p>
 
 ## Features
 
