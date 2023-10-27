@@ -39,4 +39,4 @@ NEWS may update this Privacy Policy from time to time. Any changes will be poste
 #### Contact Us
 
 If you have any questions about this Privacy Policy, please contact us
-at [sunits1999@gmail.com](mailto:sunits1999@gmail.com).
+at [benaam.labs@gmail.com](mailto:benaam.labs@gmail.com).

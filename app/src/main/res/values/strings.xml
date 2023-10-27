@@ -19,6 +19,11 @@
     <string name="theme_setting">Theme</string>
     <string name="region_setting">Region</string>
 
+    <!--Links-->
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="source_code">Source Code</string>
+
     <!--Themes-->
     <string name="system_default_theme">System Default</string>
     <string name="dark_theme">Dark</string>
