@@ -24,7 +24,8 @@
 <p align="center">
     <img src="screenshots/home_light.png" width="200" />
     <img src="screenshots/search_light.png" width="200" />
-    <img src="screenshots/bookmarks_dark.png" width="200" />
+    <img src="screenshots/bookmarks_light.png" width="200" />
+    <img src="screenshots/preferences_dark.png" width="200" />
 </p>
 
 ## Features
