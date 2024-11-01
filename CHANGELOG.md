@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 1.0.2 (2024-11-01)
+- Added Pull to Refresh
+
 ## Version 1.0.1 (2023-10-27)
 - Added Contact info
 
